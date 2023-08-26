@@ -8,6 +8,7 @@ namespace VikrisAutoWebsite.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
     }
 }
