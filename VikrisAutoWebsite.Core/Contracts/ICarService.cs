@@ -8,6 +8,6 @@ namespace VikrisAutoWebsite.Core.Contracts
 {
     public interface ICarService
     {
-        Task<IEnumerable<>>
+        
     }
 }

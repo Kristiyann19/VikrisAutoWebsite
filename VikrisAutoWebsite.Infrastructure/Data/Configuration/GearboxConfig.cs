@@ -9,38 +9,39 @@ using VikrisAutoWebsite.Infrastructure.Data.Entities;
 
 namespace VikrisAutoWebsite.Infrastructure.Data.Configuration
 {
-    internal class EngineConfig : IEntityTypeConfiguration<Engine>
+    internal class GearboxConfig : IEntityTypeConfiguration<Gearbox>
     {
-        public void Configure(EntityTypeBuilder<Engine> builder)
+        public void Configure(EntityTypeBuilder<Gearbox> builder)
         {
-            builder.HasData(CreateEngines());
+            builder.HasData(CreateGearboxes());
         }
 
-        private List<Engine> CreateEngines()
+        private List<Gearbox> CreateGearboxes()
         {
-            List<Engine> engines = new List<Engine>()
+            List<Gearbox> gearboxes = new List<Gearbox>()
             {
-                new Engine()
+                new Gearbox()
                 {
                     Id = 1,
-                    Name = "Дизел"
+                    Name = "Автоматична"
                 },
 
-                new Engine()
+                new Gearbox()
                 {
                     Id = 2,
-                    Name = "Бензин"
+                    Name = "Ръчна"
                 },
 
-                new Engine()
+                new Gearbox()
                 {
                     Id = 3,
-                    Name = "Електрически"
+                    Name = "Полуавтоматична"
                 }
 
             };
 
-            return engines;
+            return gearboxes;
         }
+    
     }
 }

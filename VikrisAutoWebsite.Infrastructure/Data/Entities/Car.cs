@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,9 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
 {
     public class Car
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         [StringLength(20)]
         public string Make { get; set; }
@@ -24,13 +28,13 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
         [Required]
         public int Price { get; set; }
 
-        [Required]
-        [StringLength(15)]
-        public string Gearbox { get; set; }
+        //[Required]
+        //[StringLength(15)]
+        //public string Gearbox { get; set; }
 
-        [Required]
-        [StringLength(15)]
-        public string EngineType { get; set; }
+        //[Required]
+        //[StringLength(15)]
+        //public string EngineType { get; set; }
 
         [Required]
         [MaxLength(999999)]
@@ -47,9 +51,9 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
         [Required]
         public int CubicCapacity { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        public string Category { get; set; }
+        //[Required]
+        //[MaxLength(20)]
+        //public string Category { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -59,5 +63,23 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
         [MaxLength(9999)]
         public string Features { get; set; }
 
+
+        [Required]
+        public int EngineId { get; set; }
+        [ForeignKey(nameof(EngineId))]
+        public Engine Engine { get; set; }
+
+
+        [Required]
+        public int GearboxId { get; set; }
+        [ForeignKey(nameof(GearboxId))]
+        public Gearbox Gearbox { get; set; }
+
+
+        [Required]
+        public int CategoryId { get; set; }
+
+        [ForeignKey(nameof(CategoryId))]
+        public Category Category { get; set; }
     }
 }
