@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace VikrisAutoWebsite.Data.Migrations
+namespace VikrisAutoWebsite.Infrastructure.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
