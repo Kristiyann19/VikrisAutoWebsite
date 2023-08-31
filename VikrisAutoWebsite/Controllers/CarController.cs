@@ -1,12 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VikrisAutoWebsite.Core.Contracts;
+using VikrisAutoWebsite.Core.Models;
 
 namespace VikrisAutoWebsite.Controllers
 {
     public class CarController : Controller
     {
-        public IActionResult Index()
+        private readonly ICarService carService;
+
+        public CarController(ICarService _carService)
         {
-            return View();
+            carService = _carService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            
+            var model = new AddCarViewModel()
+            {
+                Engines = await carService.GetEnginesAsync(),
+                Categories = await carService.GetCategoriesAsync(),
+                Gearboxes = await carService.GetGearboxesAsync()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddCarViewModel car)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(car);
+            }
+
+            await carService.AddCarAsync(car);
+
+            try
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+
+                return View(car);
+            }
         }
     }
 }

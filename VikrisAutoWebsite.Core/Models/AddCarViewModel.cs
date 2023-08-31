@@ -52,8 +52,8 @@ namespace VikrisAutoWebsite.Core.Models
         [MaxLength(9999)]
         public string Features { get; set; }
 
-        [Required]
-        public IFormFile Image { get; set; }
+        public int ImageId { get; set; }
+        public List<Image> Images { get; set; } = new List<Image>();
 
         public int EngineId { get; set; }
         public IEnumerable<Engine> Engines { get; set; } = new List<Engine>();
@@ -63,6 +63,7 @@ namespace VikrisAutoWebsite.Core.Models
 
         public int CategoryId { get; set; }
         public IEnumerable<Category> Categories { get; set; } = new List<Category>();
-   
+
+        public List<IFormFile> ImageFiles { get; set; }
     }
 }

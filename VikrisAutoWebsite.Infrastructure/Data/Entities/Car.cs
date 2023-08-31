@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -49,6 +50,10 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
         public int HorsePower { get; set; }
 
         [Required]
+
+        public virtual List<Image> Images { get; set; } = new List<Image>();
+
+        [Required]
         public int CubicCapacity { get; set; }
 
         //[Required]
@@ -81,5 +86,8 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
 
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; }
+
+        
+
     }
 }

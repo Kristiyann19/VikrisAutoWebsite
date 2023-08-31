@@ -1,39 +1,114 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+
 using VikrisAutoWebsite.Core.Contracts;
 using VikrisAutoWebsite.Core.Models;
+using VikrisAutoWebsite.Infrastructure.Data;
 using VikrisAutoWebsite.Infrastructure.Data.Entities;
 
 namespace VikrisAutoWebsite.Core.Services
 {
     public class CarService : ICarService
     {
-        public Task AddCarAsync(AddCarViewModel car)
+        private readonly ApplicationDbContext context;
+       
+        public CarService(ApplicationDbContext context_)
         {
-            throw new NotImplementedException();
+            context = context_;
         }
 
-        public Task<IEnumerable<CarViewModel>> GetAllCarsAsync()
+        public async Task AddCarAsync(AddCarViewModel car)
         {
-            throw new NotImplementedException();
+            var entity = new Car()
+            {
+                Make = car.Make,
+                Model = car.Model,
+                Year = car.Year,
+                Color = car.Color,
+                HorsePower = car.HorsePower,
+                CategoryId = car.CategoryId,
+                CubicCapacity = car.CubicCapacity,
+                ShortInfo = car.ShortInfo,
+                EngineId = car.EngineId,
+                Features = car.Features,
+                GearboxId = car.GearboxId,
+                Mileage = car.Mileage,
+                Images = car.Images,
+                Price = car.Price
+            };
+
+            if (car.ImageFiles != null && car.ImageFiles.Any())
+            {
+                foreach (var imageFile in car.ImageFiles)
+                {
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        string fileName = Path.GetFileName(imageFile.FileName);
+                        string filePath = Path.Combine("wwwroot/css", fileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await imageFile.CopyToAsync(stream);
+                        }
+
+                        var image = new Image
+                        {
+                            FileName = fileName,
+                            FilePath = "/Images/" + fileName
+                        };
+
+                        car.Images.Add(image);
+                    }
+                }
+            }
+
+            await context.Cars.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Category>> GetCategoriesAsync()
+        public async Task<IEnumerable<CarViewModel>> GetAllCarsAsync()
         {
-            throw new NotImplementedException();
+            var entities = await context.Cars
+                .Include(c => c.Engine)
+                .Include(c => c.Category)
+                .Include(c => c.Gearbox)
+                .Include(c => c.Images)
+                .ToListAsync();
+
+            return entities
+                .Select(c => new CarViewModel
+                {
+                    Id = c.Id,
+                    Make = c.Make,
+                    Model = c.Model,
+                    Year = c.Year,
+                    Color = c.Color,
+                    HorsePower = c.HorsePower,
+                    Category = c.Category.Name,
+                    CubicCapacity = c.CubicCapacity,
+                    ShortInfo = c.ShortInfo,
+                    Engine = c.Engine.Name,
+                    Features = c.Features,
+                    Gearbox = c.Gearbox.Name,
+                    Mileage = c.Mileage,
+                    Images = c.Images,
+                    Price = c.Price
+
+                });
+
         }
 
-        public Task<IEnumerable<Engine>> GetEnginesAsync()
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            throw new NotImplementedException();
+            return await context.Categories.ToListAsync();
         }
 
-        public Task<IEnumerable<Gearbox>> GetGearboxesAsync()
+        public async Task<IEnumerable<Engine>> GetEnginesAsync()
         {
-            throw new NotImplementedException();
+            return await context.Engines.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Gearbox>> GetGearboxesAsync()
+        {
+            return await context.Gearboxes.ToListAsync();
         }
     }
 }

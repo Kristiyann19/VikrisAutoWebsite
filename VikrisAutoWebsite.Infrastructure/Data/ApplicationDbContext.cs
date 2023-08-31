@@ -34,13 +34,20 @@ namespace VikrisAutoWebsite.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             if (seedDb)
             {
                 builder.ApplyConfiguration(new EngineConfig());
                 builder.ApplyConfiguration(new CategoryConfig());
                 builder.ApplyConfiguration(new GearboxConfig());
             }
-            
+
+            builder.Entity<Image>()
+            .HasOne(i => i.Car)
+            .WithMany(c => c.Images)
+            .HasForeignKey(i => i.CarId)
+            .OnDelete(DeleteBehavior.Cascade);
+
 
             base.OnModelCreating(builder);
         }

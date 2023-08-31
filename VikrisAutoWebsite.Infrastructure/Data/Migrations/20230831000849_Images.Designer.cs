@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VikrisAutoWebsite.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using VikrisAutoWebsite.Infrastructure.Data;
 namespace VikrisAutoWebsite.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230831000849_Images")]
+    partial class Images
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -293,6 +295,28 @@ namespace VikrisAutoWebsite.Infrastructure.Migrations
                     b.ToTable("Cars");
                 });
 
+            modelBuilder.Entity("VikrisAutoWebsite.Infrastructure.Data.Entities.CarImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("CarImage");
+                });
+
             modelBuilder.Entity("VikrisAutoWebsite.Infrastructure.Data.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -413,32 +437,6 @@ namespace VikrisAutoWebsite.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("VikrisAutoWebsite.Infrastructure.Data.Entities.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.ToTable("Image");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -517,7 +515,7 @@ namespace VikrisAutoWebsite.Infrastructure.Migrations
                     b.Navigation("Gearbox");
                 });
 
-            modelBuilder.Entity("VikrisAutoWebsite.Infrastructure.Data.Entities.Image", b =>
+            modelBuilder.Entity("VikrisAutoWebsite.Infrastructure.Data.Entities.CarImage", b =>
                 {
                     b.HasOne("VikrisAutoWebsite.Infrastructure.Data.Entities.Car", "Car")
                         .WithMany("Images")

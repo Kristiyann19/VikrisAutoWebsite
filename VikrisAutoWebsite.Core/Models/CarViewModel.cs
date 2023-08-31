@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VikrisAutoWebsite.Infrastructure.Data.Entities;
 
 namespace VikrisAutoWebsite.Core.Models
 {
@@ -14,7 +15,7 @@ namespace VikrisAutoWebsite.Core.Models
         public string Model { get; set; }       
         public string ShortInfo { get; set; }
         public int Price { get; set; }
-        public IFormFile Image { get; set; }
+        public List<Image> Images { get; set; } = new List<Image>();
         public int Mileage { get; set; }
         public int Year { get; set; }
         public int HorsePower { get; set; }

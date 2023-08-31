@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VikrisAutoWebsite.Core.Contracts;
 using VikrisAutoWebsite.Models;
 
 namespace VikrisAutoWebsite.Controllers
@@ -7,15 +8,18 @@ namespace VikrisAutoWebsite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICarService carService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICarService _carService)
         {
-            _logger = logger;
+            carService = _carService;
         }
+       
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var cars = await carService.GetAllCarsAsync();
+            return View(cars);
         }
 
 
