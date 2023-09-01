@@ -38,7 +38,6 @@ namespace VikrisAutoWebsite.Infrastructure.Data.Entities
         //public string EngineType { get; set; }
 
         [Required]
-        [MaxLength(999999)]
         public int Mileage { get; set; }
 
         [Required]

@@ -30,7 +30,7 @@ namespace VikrisAutoWebsite.Core.Models
         public int Price { get; set; }
 
         [Required]
-        [MaxLength(999999)]
+        
         public int Mileage { get; set; }
 
         [Required]

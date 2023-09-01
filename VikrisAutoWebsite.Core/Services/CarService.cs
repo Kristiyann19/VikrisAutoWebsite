@@ -52,7 +52,7 @@ namespace VikrisAutoWebsite.Core.Services
                         var image = new Image
                         {
                             FileName = fileName,
-                            FilePath = "/Images/" + fileName
+                            FilePath = "/wwwroot/css/" + fileName
                         };
 
                         car.Images.Add(image);

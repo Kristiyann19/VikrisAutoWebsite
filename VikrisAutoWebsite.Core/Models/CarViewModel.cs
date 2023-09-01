@@ -15,6 +15,8 @@ namespace VikrisAutoWebsite.Core.Models
         public string Model { get; set; }       
         public string ShortInfo { get; set; }
         public int Price { get; set; }
+
+        public List<IFormFile> ImageFiles { get; set; }
         public List<Image> Images { get; set; } = new List<Image>();
         public int Mileage { get; set; }
         public int Year { get; set; }

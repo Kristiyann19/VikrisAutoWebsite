@@ -39,7 +39,7 @@ namespace VikrisAutoWebsite.Controllers
 
             try
             {
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
             }
             catch (Exception)
             {
