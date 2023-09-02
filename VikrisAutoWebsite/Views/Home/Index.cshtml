@@ -9,15 +9,22 @@
     @foreach (var car in Model)
     {
         <div class="card">
-            @if (car.Images.Any())
-            {
-                <img src="@Url.Content(car.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
-            }
-            <div class="card-body">
-                <h5 class="card-title mt-1">@car.Make @car.Model</h5>
-                <p class="mb-0">Year: @car.Year</p>
-                <p class="mb-0">Price: @car.Price$ Per Month</p>
-                <p class="mb-0">Engine: @car.Engine</p>
+            <div class="row">
+                @if (car.Images.Any())
+                {
+                    <div class="col-md-4">
+                        <img src="@Url.Content(car.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
+                    </div>
+                }
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title mt-1">@car.Make @car.Model</h5>
+                        <p class="mb-0">Year: @car.Year</p>
+                        <p class="mb-0">Price: @car.Price$ Per Month</p>
+                        <p class="mb-0">Engine: @car.Engine</p>
+                    </div>
+                </div>
             </div>
         </div>
     } 
