@@ -5,37 +5,105 @@
     ViewData["Title"] = "Home Page";
 }
 
-  <div class="text-center row">
-    @foreach (var car in Model)
-    {
-        <div class="card">
-            <div class="row">
-                @if (car.Images.Any())
-                {
-                    <div class="col-md-4">
-                        <img src="@Url.Content(car.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
-                    </div>
-                }
-
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title mt-1">@car.Make @car.Model</h5>
-                        <p class="mb-0">Year: @car.Year</p>
-                        <p class="mb-0">Price: @car.Price$ Per Month</p>
-                        <p class="mb-0">Engine: @car.Engine</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    } 
-</div>
-
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card-img-top {
+            max-height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
     <img src="~/css/VikrisAuto.png" class="background-img" alt="Background Image" />
+
     <div class="content">
-        dsadasdsadsa
+        <div class="text-center row">
+            @foreach (var car in Model)
+            {
+                <div class="card col-4">
+                    <div class="row">
+                        @if (car.Images.Any())
+                        {
+                            <div class="col-md-4">
+                                <img src="@Url.Content(car.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
+                            </div>
+                        }
+
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title mt-1">@car.Make @car.Model @car.ShortInfo</h5>
+                                <p class="card-text">@car.Price лева</p>
+                                <p class="card-text">Година: @car.Year</p>                       
+                                <p class="card-text">Двигател: @car.Engine</p>
+                                <p class="card-text">Кутия: @car.Gearbox</p>
+                                <a href="#" class="btn btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            } 
+        </div>
     </div>
 </body>
 </html>
+
+
+
+
+
+
