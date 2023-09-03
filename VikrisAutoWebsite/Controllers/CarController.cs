@@ -13,6 +13,12 @@ namespace VikrisAutoWebsite.Controllers
             carService = _carService;
         }
 
+        public async Task<IActionResult> Cars()
+        {
+            var cars = await carService.GetAllCarsAsync();
+            return View(cars);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Add()
         {

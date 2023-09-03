@@ -1,15 +1,11 @@
-﻿@using VikrisAutoWebsite.Core.Models
+﻿ @using VikrisAutoWebsite.Core.Models
 @model IEnumerable<CarViewModel>
 
-@{
-    ViewData["Title"] = "Home Page";
+    @{
+    ViewBag.Title = "Cars";
 }
 
-<body>
-    <img src="~/css/VikrisAuto.png" class="background-img" alt="Background Image" />
-    <button id="myCarsButton">My Cars</button>
-
-    <div class="content">
+<div class="content">
     <div class="text-center row">
         @foreach (var car in Model)
         {
@@ -36,27 +32,3 @@
         } 
     </div>
 </div>
-</body>
-<script>
-    // Function to reveal hidden content when scrolling
-    window.addEventListener('scroll', function () {
-        const revealThreshold = 100; // Adjust this threshold as needed
-        const hiddenContent = document.querySelector('.content');
-        if (window.scrollY > revealThreshold) {
-            hiddenContent.style.display = 'block';
-        }
-    });
-
-    // Function to navigate to the car section when the button is clicked
-    const myCarsButton = document.getElementById('myCarsButton');
-
-    myCarsButton.addEventListener('click', function () {
-        window.location.href = '/Car/Cars'; // Replace with the actual URL of your car section
-    });
-</script>
-
-
-
-
-
-
