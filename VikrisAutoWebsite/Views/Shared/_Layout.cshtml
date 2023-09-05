@@ -23,11 +23,14 @@
                     <ul class="navbar-nav flex-grow-1">
                         @*тези тук ще се сменят със нашите коли и тн. Първо трябва да се напише логиката за изкарването на колите*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начало</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Cars">Нашите коли</a>
                         </li>
                         <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Add">Add Car</a>
-                            </li>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

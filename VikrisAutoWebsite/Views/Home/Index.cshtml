@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-@*<button id="myCarsButton">My Cars</button>*@
+
 <body>
     
     <img src="~/css/VikrisAuto.png" class="background-img" alt="Background Image" />
@@ -14,7 +14,8 @@
     <div class="text-center row">
         @foreach (var car in Model)
         {
-            <div class="card col-md-3">
+            
+            <div class="card col-md-3" onclick="location.href='@Url.Action("CarById", "Car", new {carId = car.Id})';" style="cursor: pointer;">
                 <div class="row">
                     <div class="col-md-12">
                         @if (car.Images.Any())
@@ -35,26 +36,9 @@
                 </div>
             </div>
         } 
+    </div>   
     </div>
-</div>
 </body>
-<script>
-    // Function to reveal hidden content when scrolling
-    //window.addEventListener('scroll', function () {
-    //    const revealThreshold = 100; // Adjust this threshold as needed
-    //    const hiddenContent = document.querySelector('.content');
-    //    if (window.scrollY > revealThreshold) {
-    //        hiddenContent.style.display = 'block';
-    //    }
-    //});
-
-    // Function to navigate to the car section when the button is clicked
-    const myCarsButton = document.getElementById('myCarsButton');
-
-    myCarsButton.addEventListener('click', function () {
-        window.location.href = '/Car/Cars'; // Replace with the actual URL of your car section
-    });
-</script>
 
 
 

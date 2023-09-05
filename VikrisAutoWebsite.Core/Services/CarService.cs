@@ -78,7 +78,7 @@ namespace VikrisAutoWebsite.Core.Services
                 {
                     Id = c.Id,
                     Make = c.Make,
-                    Model = c.Model,
+                    Model = c.Model,    
                     Year = c.Year,
                     Color = c.Color,
                     HorsePower = c.HorsePower,
@@ -93,6 +93,36 @@ namespace VikrisAutoWebsite.Core.Services
                     Price = c.Price
 
                 });
+
+        }
+
+        public async Task<CarViewModel> GetCarByIdAsync(int carId)
+        {
+            return await context.Cars
+                .Include(c => c.Engine)
+                .Include(c => c.Category)
+                .Include(c => c.Gearbox)
+                .Include(c => c.Images)
+                .Where(c => c.Id == carId)
+                .Select(c => new CarViewModel
+                {
+                    Id = c.Id,
+                    Make = c.Make,
+                    Model = c.Model,
+                    Year = c.Year,
+                    Color = c.Color,
+                    HorsePower = c.HorsePower,
+                    Category = c.Category.Name,
+                    CubicCapacity = c.CubicCapacity,
+                    ShortInfo = c.ShortInfo,
+                    Engine = c.Engine.Name,
+                    Features = c.Features,
+                    Gearbox = c.Gearbox.Name,
+                    Mileage = c.Mileage,
+                    Images = c.Images,
+                    Price = c.Price
+
+                }).FirstAsync();
 
         }
 

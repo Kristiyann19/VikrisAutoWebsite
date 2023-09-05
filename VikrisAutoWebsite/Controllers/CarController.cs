@@ -54,5 +54,12 @@ namespace VikrisAutoWebsite.Controllers
                 return View(car);
             }
         }
+
+        public async Task<IActionResult> CarById(int carId)
+        {
+            var car = await carService.GetCarByIdAsync(carId);
+
+            return View(car);
+        }
     }
 }

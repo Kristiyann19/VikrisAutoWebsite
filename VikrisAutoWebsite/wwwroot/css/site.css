@@ -102,31 +102,31 @@ body {
 }
 
 
-.card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+.card-link {
+    text-decoration: none; /* Remove underline for links */
 }
 
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    margin-bottom: 20px; /* Adjust spacing between cards */
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Add a slight zoom effect on hover */
+    }
+
 .card-img-top {
-    max-height: 200px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    max-height: 200px; /* Set a maximum height for the card image */
+    object-fit: cover; /* Cover the image while maintaining its aspect ratio */
 }
 
 .card-title {
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
-
-.card-body {
-    padding: 1px;
+    font-size: 1.25rem; /* Increase the font size for the title */
+    font-weight: bold; /* Make the title bold */
 }
 
 .card-text {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    font-size: 1rem; /* Adjust font size for text */
 }

@@ -12,6 +12,8 @@ namespace VikrisAutoWebsite.Core.Contracts
     {
         Task<IEnumerable<CarViewModel>> GetAllCarsAsync();
 
+        Task<CarViewModel> GetCarByIdAsync(int carId);
+
         Task<IEnumerable<Engine>> GetEnginesAsync();
 
         Task<IEnumerable<Category>> GetCategoriesAsync();

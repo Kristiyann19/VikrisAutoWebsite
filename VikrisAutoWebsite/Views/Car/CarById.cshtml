@@ -1,0 +1,29 @@
+﻿@using VikrisAutoWebsite.Core.Models
+@model CarViewModel
+
+<div class="card col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        @if (Model.Images.Any())
+                        {
+                            <img src="@Url.Content(Model.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
+                        }
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title mt-1">@Model.Make @Model.Model @Model.ShortInfo</h5>
+                            <p class="card-text">@Model.Price лева</p>
+                            <p class="card-text">Година: @Model.Year</p>                       
+                            <p class="card-text">Двигател: @Model.Engine</p>
+                            <p class="card-text">Кутия: @Model.HorsePower</p>
+                            <p class="card-text">Кутия: @Model.CubicCapacity</p>
+                            <p class="card-text">Кутия: @Model.Gearbox</p>
+                            <p class="card-text">Кутия: @Model.Category</p>
+                            <p class="card-text">Кутия: @Model.Color</p>
+                            <p class="card-text">Кутия: @Model.Mileage</p>
+                            <p class="card-text">Кутия: @Model.Features</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
