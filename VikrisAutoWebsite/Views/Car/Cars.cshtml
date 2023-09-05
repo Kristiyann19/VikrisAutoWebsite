@@ -5,11 +5,12 @@
     ViewBag.Title = "Cars";
 }
 
-<div class="content">
+ <div class="content">
     <div class="text-center row">
         @foreach (var car in Model)
         {
-            <div class="card col-md-3">
+            
+            <div class="card col-md-3" onclick="location.href='@Url.Action("CarById", "Car", new {carId = car.Id})';" style="cursor: pointer;">
                 <div class="row">
                     <div class="col-md-12">
                         @if (car.Images.Any())
@@ -30,5 +31,5 @@
                 </div>
             </div>
         } 
+    </div>   
     </div>
-</div>

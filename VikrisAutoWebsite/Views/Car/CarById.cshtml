@@ -6,8 +6,11 @@
                     <div class="col-md-12">
                         @if (Model.Images.Any())
                         {
-                            <img src="@Url.Content(Model.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
-                        }
+                             @foreach (var image in @Model.Images)
+                             {
+                                 <img src="@Url.Content(image.FilePath)" alt="Car Image" class="card-img-top" />
+                             }
+                         }                      
                     </div>
 
                     <div class="col-md-12">
@@ -22,7 +25,7 @@
                             <p class="card-text">Кутия: @Model.Category</p>
                             <p class="card-text">Кутия: @Model.Color</p>
                             <p class="card-text">Кутия: @Model.Mileage</p>
-                            <p class="card-text">Кутия: @Model.Features</p>
+                            <p class="card-text">Кутия: @Model.Features </p>
                         </div>
                     </div>
                 </div>
