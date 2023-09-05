@@ -25,21 +25,18 @@ html {
 }*/
 
 .background-img {
-    top: 0;
-    left: 0;
-    width: 100%;
+    margin-left: -8.8%;
+    width: 117.55%;
     height: 100%;
-    object-fit: cover;
+    margin-top: -1.5%;
     z-index: -1;
 }
 
-.content {
-    position: relative;
-    z-index: 1;
-    
+.content {  
+    z-index: 1; 
 }
 
-/*for logo*/
+
 .navbar-brand {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -50,16 +47,16 @@ html {
 }
 
 .logo-image {
-    width: 120px; /*DONT FORGET TO MAYBE CHANGE LATER*/
+    width: 120px;
     height: auto;
     display: block;
 }
 
 .scrollable-container {
-    max-height: 650px; /* Adjust the maximum height as needed */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-    border: 1px solid #ccc; /* Add a border for visual distinction */
-    padding: 10px; /* Add padding for spacing */
+    max-height: 650px; 
+    overflow-y: auto; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
 }
 
 body {
