@@ -19,7 +19,7 @@
                     <div class="col-md-12">
                         @if (car.Images.Any())
                         {
-                            <img src="@Url.Content(car.Images.First().FilePath)" alt="Car Image" class="card-img-top" />
+                            <img src="@Url.Content(car.Images.Last().FilePath)" alt="Car Image" class="card-img-top" />
                         }
                     </div>
 

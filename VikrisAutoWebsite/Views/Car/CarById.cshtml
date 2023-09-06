@@ -1,20 +1,25 @@
 ﻿@using VikrisAutoWebsite.Core.Models
 @model CarViewModel
 
-<div class="card col-md-3">
-                <div class="row">
-                    <div class="col-md-12">
+<div class="cardId col-md-7">
+                <div class="image-gallery">
+                    <div class="large-image">
+                        <img src="@Url.Content(Model.Images.Last().FilePath)" alt="Large Image" class="enlarged-image" />
+                    </div>
+                    <div class="thumbnail-container">
                         @if (Model.Images.Any())
                         {
                              @foreach (var image in @Model.Images)
                              {
-                                 <img src="@Url.Content(image.FilePath)" alt="Car Image" class="card-img-top" />
+                                 <div class="thumbnail-wrapper">
+                                 <img src="@Url.Content(image.FilePath)" alt="Car Image" class="thumbnail" />
+                                 </div>
                              }
                          }                      
                     </div>
 
                     <div class="col-md-12">
-                        <div class="card-body">
+                        <div class="card-body-id">
                             <h5 class="card-title mt-1">@Model.Make @Model.Model @Model.ShortInfo</h5>
                             <p class="card-text">@Model.Price лева</p>
                             <p class="card-text">Година: @Model.Year</p>                       
@@ -30,3 +35,19 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.thumbnail').click(function () {
+            // Get the source of the clicked thumbnail
+            var imageSrc = $(this).attr('src');
+            
+            // Set the source of the enlarged image
+            $('.enlarged-image').attr('src', imageSrc);
+        });
+    });
+</script>

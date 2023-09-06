@@ -130,3 +130,46 @@ body {
 .card-text {
     font-size: 1rem; /* Adjust font size for text */
 }
+
+
+.cardId {
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    margin-bottom: 50px; /* Adjust spacing between cards */
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.large-image {
+    max-width: 100%;
+    max-height: 70vh; /* Adjust the height as needed */
+}
+
+.enlarged-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
+
+.thumbnail-wrapper {
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    transition: opacity 0.3s;
+}
