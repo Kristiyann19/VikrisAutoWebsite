@@ -15,6 +15,10 @@ namespace VikrisAutoWebsite.Controllers
             carService = _carService;
         }
        
+        public ActionResult Contacts()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Index()
         {

@@ -43,7 +43,7 @@ namespace VikrisAutoWebsite.Core.Services
                     if (imageFile != null && imageFile.Length > 0)
                     {
                         string fileName = Path.GetFileName(imageFile.FileName);
-                        string filePath = Path.Combine("wwwroot/css", fileName);
+                        string filePath = Path.Combine("wwwroot/images", fileName);
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await imageFile.CopyToAsync(stream);
@@ -52,7 +52,7 @@ namespace VikrisAutoWebsite.Core.Services
                         var image = new Image
                         {
                             FileName = fileName,
-                            FilePath = "~/css/" + fileName
+                            FilePath = "~/images/" + fileName
                         };
 
                         car.Images.Add(image);
@@ -139,6 +139,11 @@ namespace VikrisAutoWebsite.Core.Services
         public async Task<IEnumerable<Gearbox>> GetGearboxesAsync()
         {
             return await context.Gearboxes.ToListAsync();
+        }
+
+        public Task<CarViewModel> RemoveCarByIdAsync(int carId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

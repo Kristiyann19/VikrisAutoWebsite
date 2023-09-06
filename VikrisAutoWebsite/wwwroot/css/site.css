@@ -13,16 +13,21 @@ html {
   min-height: 100%;
 }
 
-/*body {
-  margin-bottom: 60px;
-}*/
-
-/*for background */
-/*body {
+.nav-item {
+    list-style: none; 
     margin: 0;
     padding: 0;
-    overflow: hidden;
-}*/
+}
+.nav-link  {
+    text-decoration: none;
+    color: #000000; 
+    font-size: 18px; 
+    transition: color 0.3s; 
+}
+
+.nav-link:hover {
+        color: #ff0000; 
+ }
 
 .background-img {
     margin-left: -8.8%;
@@ -103,39 +108,39 @@ body {
 
 
 .card-link {
-    text-decoration: none; /* Remove underline for links */
+    text-decoration: none; 
 }
 
 .card {
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: transform 0.2s;
-    margin-bottom: 20px; /* Adjust spacing between cards */
+    margin-bottom: 20px; 
 }
 
     .card:hover {
-        transform: scale(1.05); /* Add a slight zoom effect on hover */
+        transform: scale(1.05); 
     }
 
 .card-img-top {
-    max-height: 200px; /* Set a maximum height for the card image */
-    object-fit: cover; /* Cover the image while maintaining its aspect ratio */
+    max-height: 200px; 
+    object-fit: cover; 
 }
 
 .card-title {
-    font-size: 1.25rem; /* Increase the font size for the title */
-    font-weight: bold; /* Make the title bold */
+    font-size: 1.25rem; 
+    font-weight: bold; 
 }
 
 .card-text {
-    font-size: 1rem; /* Adjust font size for text */
+    font-size: 1rem; 
 }
 
 
 .cardId {
     border: 1px solid #ccc;
     border-radius: 50px;
-    margin-bottom: 50px; /* Adjust spacing between cards */
+    margin-bottom: 50px; 
 }
 
 .image-gallery {
@@ -146,7 +151,7 @@ body {
 
 .large-image {
     max-width: 100%;
-    max-height: 70vh; /* Adjust the height as needed */
+    max-height: 70vh; 
 }
 
 .enlarged-image {
@@ -161,7 +166,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 20px; /* Adjust the spacing as needed */
+    margin-top: 20px; 
 }
 
 .thumbnail-wrapper {
@@ -169,7 +174,8 @@ body {
 }
 
 .thumbnail {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Adjust the size as needed */
+    width: 100px; 
+    height: 70px; 
+
     transition: opacity 0.3s;
 }
