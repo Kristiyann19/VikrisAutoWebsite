@@ -1,11 +1,7 @@
-﻿ @using VikrisAutoWebsite.Core.Models
+﻿@using VikrisAutoWebsite.Core.Models
 @model IEnumerable<CarViewModel>
 
-    @{
-    ViewBag.Title = "Cars";
-}
-
-  <div class="content">
+<div class="content">
     <div class="text-center row">
         @foreach (var car in Model)
         {
@@ -27,6 +23,9 @@
                             <p class="card-text">Двигател: @car.Engine</p>
                             <p class="card-text">Кутия: @car.Gearbox</p>
                         </div>
+                        <form class="input-group-sm" asp-controller="Car" asp-action="RemoveCar" asp-route-carId="@car.Id">
+                        <input type="submit" value="Delete" class="fs-6 btn btn-danger mb-3 p-2" />
+                    </form> 
                     </div>
                 </div>
             </div>

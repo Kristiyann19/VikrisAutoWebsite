@@ -141,9 +141,49 @@ namespace VikrisAutoWebsite.Core.Services
             return await context.Gearboxes.ToListAsync();
         }
 
-        public Task<CarViewModel> RemoveCarByIdAsync(int carId)
+        public async Task<IEnumerable<CarViewModel>> RemoveCarByIdAsync(int carId)
         {
-            throw new NotImplementedException();
+            var car = await context.Cars
+                .Include(c => c.Engine)
+                .Include(c => c.Category)
+                .Include(c => c.Gearbox)
+                .Include(c => c.Images)
+                .FirstOrDefaultAsync(c => c.Id == carId);
+    
+            if (car != null)
+            {
+                context.Cars.Remove(car);
+                await context.SaveChangesAsync();
+            }
+
+        
+            var remainingCars = await context.Cars
+                .Include(c => c.Engine)
+                .Include(c => c.Category)
+                .Include(c => c.Gearbox)
+                .Include(c => c.Images)
+                .ToListAsync();
+
+            return remainingCars.Select(c => new CarViewModel
+            {
+                Id = c.Id,
+                Make = c.Make,
+                Model = c.Model,
+                Year = c.Year,
+                Color = c.Color,
+                HorsePower = c.HorsePower,
+                Category = c.Category.Name,
+                CubicCapacity = c.CubicCapacity,
+                ShortInfo = c.ShortInfo,
+                Engine = c.Engine.Name,
+                Features = c.Features,
+                Gearbox = c.Gearbox.Name,
+                Mileage = c.Mileage,
+                Images = c.Images,
+                Price = c.Price
+            });
+
+
         }
     }
 }

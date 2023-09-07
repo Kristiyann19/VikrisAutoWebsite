@@ -12,7 +12,7 @@ namespace VikrisAutoWebsite.Core.Contracts
     {
         Task<IEnumerable<CarViewModel>> GetAllCarsAsync();
 
-        Task<CarViewModel> RemoveCarByIdAsync(int carId);
+        Task<IEnumerable<CarViewModel>> RemoveCarByIdAsync(int carId);
 
         Task<CarViewModel> GetCarByIdAsync(int carId);
 
