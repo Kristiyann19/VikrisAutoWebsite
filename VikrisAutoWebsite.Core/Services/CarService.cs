@@ -64,6 +64,11 @@ namespace VikrisAutoWebsite.Core.Services
             await context.SaveChangesAsync();
         }
 
+        public bool Exists(int carId)
+        {
+            return context.Cars.Where(c => c.Id == carId).Any();
+        }
+
         public async Task<IEnumerable<CarViewModel>> GetAllCarsAsync()
         {
             var entities = await context.Cars

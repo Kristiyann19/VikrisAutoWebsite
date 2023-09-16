@@ -57,6 +57,11 @@ namespace VikrisAutoWebsite.Controllers
 
         public async Task<IActionResult> CarById(int carId)
         {
+            if (!carService.Exists(carId))
+            {
+                return BadRequest();
+            }
+
             var car = await carService.GetCarByIdAsync(carId);
 
             return View(car);
@@ -65,6 +70,11 @@ namespace VikrisAutoWebsite.Controllers
        
         public async Task<IActionResult> RemoveCar (int carId)
         {
+            if (!carService.Exists(carId))
+            {
+                return BadRequest();
+            }
+
             var cars = await carService.RemoveCarByIdAsync(carId);
             return View(cars);
         }

@@ -10,6 +10,8 @@ namespace VikrisAutoWebsite.Core.Contracts
 {
     public interface ICarService
     {
+        bool Exists(int carId);
+        
         Task<IEnumerable<CarViewModel>> GetAllCarsAsync();
 
         Task<IEnumerable<CarViewModel>> RemoveCarByIdAsync(int carId);
