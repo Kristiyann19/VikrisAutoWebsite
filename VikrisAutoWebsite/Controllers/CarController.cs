@@ -78,7 +78,6 @@ namespace VikrisAutoWebsite.Controllers
             var cars = await carService.RemoveCarByIdAsync(carId);
             return View(cars);
         }
-
-        
+      
     }
 }
