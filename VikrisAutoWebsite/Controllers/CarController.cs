@@ -70,13 +70,18 @@ namespace VikrisAutoWebsite.Controllers
        
         public async Task<IActionResult> RemoveCar (int carId)
         {
-            if (!carService.Exists(carId))
-            {
-                return BadRequest();
-            }
+            //if (!carService.Exists(carId))
+            //{
+            //    return BadRequest();
+            //}
 
             var cars = await carService.RemoveCarByIdAsync(carId);
             return View(cars);
+        }
+
+        public ActionResult EditTool()
+        {
+            return View();
         }
       
     }

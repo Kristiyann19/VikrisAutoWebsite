@@ -64,6 +64,7 @@ namespace VikrisAutoWebsite.Core.Services
             await context.SaveChangesAsync();
         }
 
+        //FIX THIS METHOD
         public bool Exists(int carId)
         {
             return context.Cars.Where(c => c.Id == carId).Any();
